@@ -1,38 +1,14 @@
 import React, { Component } from 'react';
+import Auth from './components/Auth';
 import FacebookLoginButton from './components/FacebookLoginButton';
+
 
 class App extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      loggedIn: false,
-      userID: null,
-      accessToken: null
-    }
-  }
-
-  checkIfLoggedIn = () => {
-    setTimeout(function(){
-      window.FB.getLoginStatus(function(response) {
-        console.log(response)
-        if (response.status === 'connected') {
-          alert('You are now logged in')
-        } else {
-          alert('You are not logged in')
-        }
-      });
-    }, 500);
-  }
-
-  componentDidMount(){
-    this.checkIfLoggedIn()
-  }
-
   render() {
-    console.log(this.state)
     return (
       <div className="App">
+        <Auth />
         <FacebookLoginButton />
       </div>
     );
