@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logout from './Logout'
 import TextBox from './TextBox'
+import ResultsContainer from './ResultsContainer'
 import { Grid } from 'semantic-ui-react'
 
 class Home extends Component {
@@ -19,7 +20,6 @@ class Home extends Component {
   }
 
   render(){
-    console.log(this.state.input)
     return(
       <div>
 
@@ -36,6 +36,7 @@ class Home extends Component {
             <div className='search-box'><TextBox setInput={this.setInput}/></div>
           </div>
           <div className='results'>
+            <ResultsContainer input={this.state.input}/>
           </div>
         </div>
 
