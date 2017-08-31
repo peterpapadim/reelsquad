@@ -14,7 +14,8 @@ class Auth extends Component {
       signedRequest: '',
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      dataID: 0
     }
   }
 
@@ -24,19 +25,23 @@ class Auth extends Component {
         let firstName = response.name.split(' ')[0]
         let lastName = response.name.split(' ')[1]
         let email = response.email
-        this.setState({
-          loggedIn: true,
-          accessToken: user.authResponse.accessToken,
-          userID: user.authResponse.userID,
-          expiresIn: user.authResponse.expiresIn,
-          signedRequest: user.authResponse.signedRequest,
-          firstName: firstName,
-          lastName: lastName,
-          email: email
-        })
+        UserAdapter.create(firstName, lastName, email, user.authResponse.userID)
+        .then(resp => resp.json())
+        .then(json =>
+          this.setState({
+            loggedIn: true,
+            accessToken: user.authResponse.accessToken,
+            userID: user.authResponse.userID,
+            expiresIn: user.authResponse.expiresIn,
+            signedRequest: user.authResponse.signedRequest,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            dataID: json
+          })
+        )
       })
   }
-
 
   updateLoggedOutState = () => {
     this.setState({
@@ -47,7 +52,8 @@ class Auth extends Component {
       signedRequest: '',
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      dataID: 0
     })
   }
 
@@ -67,6 +73,13 @@ class Auth extends Component {
             this.updateLoggedOutState()
         }
       });
+
+      window.FB.getLoginStatus( (response) => {
+        if (response.status === 'connected') {
+          this.updateLoggedInState(response)
+        }
+      });
+
     }.bind(this);
 
     (function(d, s, id) {
@@ -76,7 +89,6 @@ class Auth extends Component {
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
   }
 
   render() {

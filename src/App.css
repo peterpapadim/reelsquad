@@ -1,4 +1,4 @@
-.login-logout-button {
+.login-button {
   position: absolute;
     margin: auto;
     top: 0;
@@ -7,4 +7,8 @@
     left: 0;
     width: 100px;
     height: 100px;
+}
+
+.logout-button {
+
 }

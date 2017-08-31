@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './components/Login'
 import './App.css'
-import FacebookLoginButton from './components/FacebookLoginButton';
-
-const Login = () => {
-  return (
-    <Router>
-       <Route exact path="/" render={FacebookLoginButton} />
-    </Router>
-  );
-};
 
 class App extends Component {
 
@@ -32,11 +23,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="login-logout-button">
-          <Login />
-        </div>
+        <Login />
       </div>
-    );
+    )
   }
 }
 
