@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import MovieApiAdapter from '../adapters/MovieApiAdapter'
+import { Card } from 'semantic-ui-react'
+import MovieApiAdapter from '../adapters/MovieApiAdapter';
+import Result from './Result';
 
 class ResultsContainer extends Component {
   constructor(){
@@ -11,7 +13,8 @@ class ResultsContainer extends Component {
   }
 
   displayResults = () => {
-
+    console.log('we are in!')
+    return this.state.searchResults.map(movieOrShow => <Result key={movieOrShow.id} currentMovieOrShow={movieOrShow} />)
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -20,7 +23,8 @@ class ResultsContainer extends Component {
       MovieApiAdapter.searchResults(inputURI)
       .then(resp => resp.json())
       .then(json => {
-        let filteredResults = json.results.filter((movie) => {return Object.keys(movie).includes('original_name')} )
+        // API returns matching Shows, Movies, or People. Filter below removes people.
+        let filteredResults = json.results.filter((movieOrShow) => {return movieOrShow.media_type !== 'person'} )
         this.setState({searchResults: filteredResults})
       })
     }
@@ -30,7 +34,7 @@ class ResultsContainer extends Component {
     console.log(this.state.searchResults)
     return(
       <div>
-        {this.state.searchResults.size > 0 ? this.displayResults() : null}
+        <Card.Group>{this.displayResults()}</Card.Group>
       </div>
     )
   }

@@ -32,8 +32,8 @@ class Home extends Component {
 
         <div className='right-column'>
           <div className='search'>
-            <div className='name-logout'><span>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}  <Logout /></span></div>
-            <div className='search-box'><TextBox setInput={this.setInput}/></div>
+            <span className='name-logout'>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}  <Logout /></span>
+            <TextBox setInput={this.setInput}/>
           </div>
           <div className='results'>
             <ResultsContainer input={this.state.input}/>
