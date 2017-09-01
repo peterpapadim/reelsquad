@@ -3,15 +3,18 @@ import { Card, Image } from 'semantic-ui-react'
 
 class Result extends Component {
 
-  getTitle = (currentMovieOrShow) => {
+  getYear = (currentMovieOrShow) => {
     if(Object.keys(currentMovieOrShow).includes('first_air_date')){
       return currentMovieOrShow.first_air_date.split('-')[0]
+    } else if(currentMovieOrShow.media_type === undefined){
+       let releaseDate = currentMovieOrShow.release_date.split('-')
+       return `Release Date: ${releaseDate[1]}-${releaseDate[2]}-${releaseDate[0]}`
     } else {
       return currentMovieOrShow.release_date.split('-')[0]
     }
   }
 
-  getYear = (currentMovieOrShow) => {
+  getTitle = (currentMovieOrShow) => {
     if(Object.keys(currentMovieOrShow).includes('original_name')){
       return currentMovieOrShow.original_name
     } else {
@@ -33,13 +36,14 @@ class Result extends Component {
         <Image src={this.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='medium' />
         <Card.Content>
           <Card.Header>
-            {this.getYear(this.props.currentMovieOrShow)}
+            {this.getTitle(this.props.currentMovieOrShow)}
           </Card.Header>
           <Card.Meta>
             <span className='date'>
-              {this.getTitle(this.props.currentMovieOrShow)}
+              {this.getYear(this.props.currentMovieOrShow)}
             </span>
           </Card.Meta>
+          <Card.Description>{this.props.currentMovieOrShow.media_type ? this.props.currentMovieOrShow.media_type.toUpperCase() : 'MOVIE'}</Card.Description>
         </Card.Content>
       </Card>
     )
@@ -47,5 +51,3 @@ class Result extends Component {
 }
 
 export default Result;
-
-//<img src={this.getImageUrl(this.props.currentMovieOrShow.poster_path)}/>

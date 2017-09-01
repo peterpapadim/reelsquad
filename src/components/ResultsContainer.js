@@ -12,11 +12,6 @@ class ResultsContainer extends Component {
     }
   }
 
-  displayResults = () => {
-    console.log('we are in!')
-    return this.state.searchResults.map(movieOrShow => <Result key={movieOrShow.id} currentMovieOrShow={movieOrShow} />)
-  }
-
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.input !== ''){
       let inputURI = nextProps.input.split(' ').join('%20')
@@ -28,10 +23,23 @@ class ResultsContainer extends Component {
         this.setState({searchResults: filteredResults})
       })
     }
+    else if(nextProps.resultsOnButtonClick.length > 0){
+      this.setState({searchResults: nextProps.resultsOnButtonClick})
+    }
+  }
+
+  displayResults = () => {
+    let filteredResults = this.state.searchResults
+    if(this.props.selectedFilter === 'movies'){
+      filteredResults = filteredResults.filter(movieOrShow => movieOrShow.media_type === 'movie')
+    }
+    if(this.props.selectedFilter === 'tv'){
+      filteredResults = filteredResults.filter(movieOrShow => movieOrShow.media_type === 'tv')
+    }
+    return filteredResults.map(movieOrShow => <Result key={movieOrShow.id} currentMovieOrShow={movieOrShow} />)
   }
 
   render(){
-    console.log(this.state.searchResults)
     return(
       <div>
         <Card.Group>{this.displayResults()}</Card.Group>
