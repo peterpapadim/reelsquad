@@ -41,6 +41,33 @@ class MovieApiAdapter {
   static popularMovies() {
     return fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e5a611fc95f5e1b8c6b311447c94ee76')
   }
+
+  static getYear = (currentMovieOrShow) => {
+    if(Object.keys(currentMovieOrShow).includes('first_air_date')){
+      return currentMovieOrShow.first_air_date.split('-')[0]
+    } else if(currentMovieOrShow.media_type === undefined){
+       let releaseDate = currentMovieOrShow.release_date.split('-')
+       return `Release Date: ${releaseDate[1]}-${releaseDate[2]}-${releaseDate[0]}`
+    } else {
+      return currentMovieOrShow.release_date.split('-')[0]
+    }
+  }
+
+  static getTitle = (currentMovieOrShow) => {
+    if(Object.keys(currentMovieOrShow).includes('original_name')){
+      return currentMovieOrShow.original_name
+    } else {
+      return currentMovieOrShow.original_title
+    }
+  }
+
+  static getImageUrl = (posterPath) => {
+    if(posterPath) {
+      return `https://image.tmdb.org/t/p/w185/${posterPath}`
+    } else {
+      return 'no_image.jpg'
+    }
+  }
 }
 
 export default MovieApiAdapter;

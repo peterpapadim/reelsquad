@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MovieApiAdapter from '../adapters/MovieApiAdapter';
 
 class Modal extends Component {
 
@@ -12,7 +13,9 @@ class Modal extends Component {
         <div className="modal">
           <div className="modal-content">
             <span onClick={this.clearSelectedItem} className="close">&times;</span>
-            <p>{this.props.selectedItem.title}</p>
+            <div>
+              <img src={MovieApiAdapter.getImageUrl(this.props.selectedItem.poster_path)}/>
+            </div>
           </div>
         </div>
       </div>
