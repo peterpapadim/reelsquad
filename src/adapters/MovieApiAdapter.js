@@ -68,6 +68,14 @@ class MovieApiAdapter {
       return 'no_image.jpg'
     }
   }
+
+  static youtubeURL = (id) => {
+    return `https://www.youtube.com/embed/${id}`
+  }
+
+  static getVideo = (id) => {
+    return fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+  }
 }
 
 export default MovieApiAdapter;

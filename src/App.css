@@ -110,17 +110,18 @@
   overflow-y: auto;
 }
 
-.ui.card:hover {
+/*.ui.card:hover {
   transform: scale(1.07);
   cursor: pointer;
-}
+}*/
 
 
 /* The Modal (background) */
 .modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 600px; /* Location of the box */
+    padding-left: 15%;
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -130,26 +131,53 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: black;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 100%;
+    height: 100%;
 }
 
-/* The Close Button */
+.modal-content-poster {
+  width: 15%;
+  height: 100%;
+  float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: white;
+}
+
+.content-details {
+  text-align: center;
+  width: 55%;
+  height: 100%;
+  float: left;
+  /*background: blue;*/
+  color: white;
+}
+
 .close {
+    /*background: red;*/
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    width: 2%;
+    height: 100%;
+}
+
+.video-content {
+  /*background: green;*/
+  width: 25%;
+  height: 100%;
+  float: right;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }
