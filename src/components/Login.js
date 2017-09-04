@@ -4,7 +4,7 @@ import LoginButton from './LoginButton';
 class Login extends Component {
 
   handleLoginClick = (event) => {
-    window.FB.login()
+    window.FB.login(function(response) {}, {scope: 'email,user_friends'});
   }
 
   render(){

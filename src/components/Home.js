@@ -38,6 +38,24 @@ class Home extends Component {
     })
   }
 
+  setNewReleases = () => {
+    this.setState({input: ''})
+    MovieApiAdapter.newReleases()
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({resultsOnButtonClick: json.results})
+    })
+  }
+
+  setPopularMovies = () => {
+    this.setState({input: ''})
+    MovieApiAdapter.popularMovies()
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({resultsOnButtonClick: json.results})
+    })
+  }
+
   render(){
     console.log(this.state.resultsOnButtonClick)
     return(
@@ -51,22 +69,28 @@ class Home extends Component {
               <h3>Featured</h3>
                 <div>
                   <Segment inverted>
-                    <Button inverted onClick={this.setUpcomingReleases}>Upcoming Releases</Button><br/>
-                    <Button inverted>New Releases</Button><br/>
-                    <Button inverted>Popular</Button><br/>
-                    <Button inverted>Genres</Button><br/>
-                    <Button inverted>Friends</Button><br/>
+                    <Button inverted color='grey' onClick={this.setUpcomingReleases}>Upcoming Movies</Button><br/>
+                    <Button inverted color='grey' onClick={this.setNewReleases}>New Releases</Button><br/>
+                    <Button inverted color='grey' onClick={this.setPopularMovies}>Popular</Button><br/>
+                    <Button inverted color='grey'>Genres</Button><br/>
+                    <Button inverted color='grey'>Friends</Button><br/>
                   </Segment>
                 </div>
             </div>
           </div>
-          <div className='lists'>
+          <div className='lists-user'>
+            <div className='lists'>
+              <h3>Lists</h3>
+            </div>
+            <div className='user'>
+              <p>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}</p>
+              <p><Logout /></p>
+            </div>
           </div>
         </div>
 
         <div className='right-column'>
           <div className='search'>
-            <span className='name-logout'>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}  <Logout /></span>
             <TextBox setInput={this.setInput}/>
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>

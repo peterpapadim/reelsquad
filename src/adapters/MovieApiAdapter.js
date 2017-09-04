@@ -6,26 +6,40 @@ class MovieApiAdapter {
 
   static upcomingReleases() {
     let today = new Date()
+    let twoMonths = new Date(+new Date + 5184e6)
 
     let startDD = today.getDate()
     let startMM = today.getMonth() + 1
     let startYYYY = today.getFullYear()
     let startDate = `${startYYYY}-${startMM}-${startDD}`
 
-    let endDD = 22
-    let endMM = startMM
-    let endYYYY = startYYYY
-      for(let i = 0; i < 3; i++){
-        if(endMM < 12){
-          endMM += 1
-        } else {
-          endMM = 1
-          endYYYY += 1
-        }
-      }
+    let endDD = twoMonths.getDate()
+    let endMM = twoMonths.getMonth() + 1
+    let endYYYY = twoMonths.getFullYear()
     let endDate = `${endYYYY}-${endMM}-${endDD}`
 
     return fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}&api_key=e5a611fc95f5e1b8c6b311447c94ee76`)
+  }
+
+  static newReleases() {
+    let twoWeeksAgo = new Date(+new Date - 12096e5)
+    let today = new Date()
+
+    let startDD = twoWeeksAgo.getDate()
+    let startMM = twoWeeksAgo.getMonth() + 1
+    let startYYYY = twoWeeksAgo.getFullYear()
+    let startDate = `${startYYYY}-${startMM}-${startDD}`
+
+    let endDD = today.getDate()
+    let endMM = today.getMonth() + 1
+    let endYYYY = today.getFullYear()
+    let endDate = `${endYYYY}-${endMM}-${endDD}`
+
+    return fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}&api_key=e5a611fc95f5e1b8c6b311447c94ee76`)
+  }
+
+  static popularMovies() {
+    return fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e5a611fc95f5e1b8c6b311447c94ee76')
   }
 }
 

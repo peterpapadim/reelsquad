@@ -30,9 +30,13 @@ class Result extends Component {
     }
   }
 
+  handleCardClick = () => {
+    this.props.setSelectedItem(this.props.currentMovieOrShow)
+  }
+
   render(){
     return(
-      <Card >
+      <Card onClick={this.handleCardClick}>
         <Image src={this.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='medium' />
         <Card.Content>
           <Card.Header>
