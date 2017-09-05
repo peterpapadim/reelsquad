@@ -7,7 +7,7 @@ class ListsContainer extends Component {
   constructor(){
     super();
     this.state = {
-      allLists: [],
+      // allLists: [],
       listNameInput: '',
       displayAddButton: true,
       displayInputAndSubmit: false
@@ -17,12 +17,12 @@ class ListsContainer extends Component {
   componentDidMount(){
     ListAdapter.all(this.props.userID)
     .then(resp => resp.json())
-    .then(json => this.setState({ allLists: [...json] }))
+    .then(json => this.props.setLists(json))
   }
 
   displayLists = () => {
-    if(this.state.allLists.length > 0){
-      return <Segment inverted> { this.state.allLists.map(listItem => <List key={listItem.id} name={listItem.name} />) }</Segment>
+    if(this.props.allLists.length > 0){
+      return <Segment inverted> { this.props.allLists.map(listItem => <List key={listItem.id} name={listItem.name} />) }</Segment>
     }
   }
 
@@ -51,17 +51,18 @@ class ListsContainer extends Component {
     if(this.state.listNameInput.length > 0){
       ListAdapter.create(this.props.userID, this.state.listNameInput)
       .then(resp => resp.json())
-      .then(json => this.setState({
-        allLists: [...json],
+      .then(json => {
+        this.props.setLists(json)
+        this.setState({
         displayAddButton: true,
         displayInputAndSubmit: false
       })
-    )
+    })
    }
   }
 
   render(){
-    console.log(this.state.allLists)
+    console.log(this.props.allLists)
     return(
       <div className="lists-container">
         <div className="add-list-button">

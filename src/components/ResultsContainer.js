@@ -51,7 +51,7 @@ class ResultsContainer extends Component {
     return(
       <div>
         <Card.Group>{this.displayResults()}</Card.Group>
-        {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem}/> : null}
+        {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem} allLists={this.props.allLists}/> : null}
       </div>
     )
   }

@@ -7,7 +7,8 @@ class Modal extends Component {
   constructor(){
     super();
     this.state = {
-      currentVideo: null
+      currentVideo: null,
+      selectedLists: []
     }
   }
 
@@ -25,10 +26,35 @@ class Modal extends Component {
 
   clearSelectedItem = () => {
     this.props.setSelectedItem(null)
+    this.setState({ selectedLists: [] })
+  }
+
+  dropdownOptions = () => {
+    let i = 1
+    return this.props.allLists.map((listItem) => {
+      let dropdownItem = { key: i, text: listItem.name, value: i }
+      i += 1
+      return dropdownItem
+    })
+  }
+
+  handleSelectedListsChange = (event) => {
+    if(event.target.outerHTML.includes('option')){
+      this.setState({ selectedLists: [...this.state.selectedLists, event.target.innerText]})
+    }
+    if(event.target.outerHTML.includes('delete')){
+      let currentLists = this.state.selectedLists
+      this.state.selectedLists.forEach((list, index) => {
+        if(list === event.target.previousSibling.previousSibling.textContent){
+          currentLists.splice(index, 1)
+        }
+      this.setState({ selectedLists: [...currentLists] })
+      })
+    }
   }
 
   render(){
-    console.log(this.state.currentVideo)
+    console.log(this.state.selectedLists)
     return (
         <div className="modal">
           <div className="modal-content">
@@ -38,7 +64,7 @@ class Modal extends Component {
             <div className="content-details">
               <h3>{MovieApiAdapter.getTitle(this.props.selectedItem)}</h3>
               <p>{this.props.selectedItem.overview}</p>
-              <Dropdown multiple search selection options={[{ key: 1, text: 'List One', value: 1 }, { key: 2, text: 'List Two', value: 2 }, { key: 3, text: 'List Three', value: 3 }, { key: 4, text: 'List Four', value: 4 }, { key: 5, text: 'List Five', value: 5 }, { key: 6, text: 'List Six', value: 6 }]} placeholder='Add to...' /><br /><br />
+              <Dropdown multiple search selection onChange={this.handleSelectedListsChange} options={this.dropdownOptions()} placeholder='Add to...' /><br /><br />
               <Button color='teal'>Save</Button>
             </div>
             <div className="close" onClick={this.clearSelectedItem} >&times;</div>

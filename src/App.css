@@ -71,6 +71,7 @@
   border-bottom: solid;
   border-width: medium;
   border-color: #A0A0A0;
+  overflow-y: auto;
 }
 
 .new-list-submit {

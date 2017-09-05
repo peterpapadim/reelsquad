@@ -15,8 +15,13 @@ class Home extends Component {
       input: '',
       selectedFilter: '',
       selectedList: null,
-      resultsOnButtonClick: []
+      resultsOnButtonClick: [],
+      allLists: []
     }
+  }
+
+  setLists = (lists) => {
+    this.setState({ allLists: [...lists] })
   }
 
   setInput = (newInput) => {
@@ -82,7 +87,7 @@ class Home extends Component {
           <div className='lists-user'>
             <div className='lists'>
               <h3>My Lists</h3>
-              <ListsContainer userID={this.props.loginStatus.userID}/>
+              <ListsContainer userID={this.props.loginStatus.userID} setLists={this.setLists} allLists={this.state.allLists}/>
             </div>
             <div className='user'>
               <p>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}</p>
@@ -97,7 +102,7 @@ class Home extends Component {
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>
           <div className='results'>
-            <ResultsContainer input={this.state.input} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick}/>
+            <ResultsContainer input={this.state.input} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists}/>
           </div>
         </div>
 
