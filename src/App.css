@@ -73,6 +73,10 @@
   border-color: #A0A0A0;
 }
 
+.new-list-submit {
+  padding-top: 4px;
+}
+
 .user {
   text-align: center;
   padding-top: 2%;

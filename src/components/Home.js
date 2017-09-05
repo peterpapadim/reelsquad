@@ -3,6 +3,7 @@ import Logout from './Logout'
 import TextBox from './TextBox'
 import MovieTvFilter from './MovieTvFilter'
 import ResultsContainer from './ResultsContainer'
+import ListsContainer from './ListsContainer'
 import { Grid, Button, Segment } from 'semantic-ui-react'
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
 
@@ -13,6 +14,7 @@ class Home extends Component {
     this.state = {
       input: '',
       selectedFilter: '',
+      selectedList: null,
       resultsOnButtonClick: []
     }
   }
@@ -79,7 +81,8 @@ class Home extends Component {
           </div>
           <div className='lists-user'>
             <div className='lists'>
-              <h3>Lists</h3>
+              <h3>My Lists</h3>
+              <ListsContainer userID={this.props.loginStatus.userID}/>
             </div>
             <div className='user'>
               <p>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}</p>
