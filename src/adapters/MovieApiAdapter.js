@@ -73,8 +73,12 @@ class MovieApiAdapter {
     return `https://www.youtube.com/embed/${id}`
   }
 
-  static getVideo = (id) => {
-    return fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+  static getVideo = (selectedItem) => {
+    if(Object.keys(selectedItem).includes('original_name')){
+      return fetch(`https://api.themoviedb.org/3/tv/${selectedItem.id}/videos?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+    } else {
+      return fetch(`https://api.themoviedb.org/3/movie/${selectedItem.id}/videos?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+    }
   }
 }
 

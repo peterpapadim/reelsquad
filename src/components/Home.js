@@ -57,7 +57,6 @@ class Home extends Component {
   }
 
   render(){
-    console.log(this.state.resultsOnButtonClick)
     return(
       <div>
 
