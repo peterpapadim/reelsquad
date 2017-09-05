@@ -102,7 +102,7 @@ class Home extends Component {
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>
           <div className='results'>
-            <ResultsContainer input={this.state.input} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists}/>
+            <ResultsContainer input={this.state.input} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists} userID={this.props.loginStatus.userID}/>
           </div>
         </div>
 

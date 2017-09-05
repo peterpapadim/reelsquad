@@ -13,6 +13,7 @@ class ListAdapter {
       body: JSON.stringify({userID, listName})
     })
   }
+
 }
 
 export default ListAdapter;

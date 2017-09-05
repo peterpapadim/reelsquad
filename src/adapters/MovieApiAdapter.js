@@ -69,6 +69,14 @@ class MovieApiAdapter {
     }
   }
 
+  static getNameTypeID = (currentMovieOrShow) => {
+    if(Object.keys(currentMovieOrShow).includes('original_name')){
+      return {title: currentMovieOrShow.original_name, type: 'tv', id: currentMovieOrShow.id}
+    } else {
+      return {title: currentMovieOrShow.original_title, type: 'movie', id: currentMovieOrShow.id}
+    }
+  }
+
   static youtubeURL = (id) => {
     return `https://www.youtube.com/embed/${id}`
   }
