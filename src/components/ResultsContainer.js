@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'semantic-ui-react'
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
 import Result from './Result';
+import Modal from './Modal';
 
 class ResultsContainer extends Component {
   constructor(){
@@ -36,13 +37,21 @@ class ResultsContainer extends Component {
     if(this.props.selectedFilter === 'tv'){
       filteredResults = filteredResults.filter(movieOrShow => movieOrShow.media_type === 'tv')
     }
-    return filteredResults.map(movieOrShow => <Result key={movieOrShow.id} currentMovieOrShow={movieOrShow} />)
+    return filteredResults.map(movieOrShow => <Result key={movieOrShow.id} currentMovieOrShow={movieOrShow} setSelectedItem={this.setSelectedItem}/>)
+  }
+
+  setSelectedItem = (item) => {
+    this.setState({
+      selectedItem: item
+    })
   }
 
   render(){
+    console.log(this.state.searchResults)
     return(
       <div>
         <Card.Group>{this.displayResults()}</Card.Group>
+        {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem}/> : null}
       </div>
     )
   }
