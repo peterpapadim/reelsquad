@@ -22,7 +22,7 @@ class ListsContainer extends Component {
 
   displayLists = () => {
     if(this.props.allLists.length > 0){
-      return <Segment inverted> { this.props.allLists.map(listItem => <List key={listItem.id} name={listItem.name} />) }</Segment>
+      return <Segment inverted> { this.props.allLists.map(listItem => <List key={listItem.id} name={listItem.name} setListItems={this.props.setListItems}/>) }</Segment>
     }
   }
 

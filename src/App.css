@@ -78,6 +78,12 @@
   padding-top: 4px;
 }
 
+.delete-list-button {
+  /*text-align: center;*/
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 .user {
   text-align: center;
   padding-top: 2%;

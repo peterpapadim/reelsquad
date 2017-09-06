@@ -28,7 +28,7 @@ class Modal extends Component {
 
   clearSelectedItem = () => {
     this.props.setSelectedItem(null)
-    this.setState({ selectedLists: [] })
+    // this.setState({ selectedList: [] })
   }
 
   dropdownOptions = () => {
@@ -54,6 +54,7 @@ class Modal extends Component {
     //   this.setState({ selectedLists: [...currentLists] })
     //   })
     // }
+    // this.setState({ selectedList: event.target.innerText })
     this.setState({ selectedList: event.target.innerText })
 
   }
@@ -63,6 +64,7 @@ class Modal extends Component {
     console.log(selectedItemDetails)
     ShowAdapter.create(selectedItemDetails.title, selectedItemDetails.id, selectedItemDetails.type, this.props.userID, this.state.selectedList)
     this.setState({ selectedList: '' })
+    // this.props.setSelectedList('')
     this.setState({ contentSaved: true })
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
 import Result from './Result';
 import Modal from './Modal';
@@ -15,6 +15,7 @@ class ResultsContainer extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.input !== ''){
+      // this.props.setSelectedList()
       let inputURI = nextProps.input.split(' ').join('%20')
       MovieApiAdapter.searchResults(inputURI)
       .then(resp => resp.json())
@@ -26,6 +27,8 @@ class ResultsContainer extends Component {
     }
     else if(nextProps.resultsOnButtonClick.length > 0){
       this.setState({searchResults: nextProps.resultsOnButtonClick})
+    } else {
+      this.setState({searchResults: [] })
     }
   }
 
@@ -51,7 +54,8 @@ class ResultsContainer extends Component {
     return(
       <div>
         <Card.Group>{this.displayResults()}</Card.Group>
-        {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem} allLists={this.props.allLists} userID={this.props.userID}/> : null}
+        {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem} allLists={this.props.allLists} userID={this.props.userID} /> : null}
+        <div className="delete-list-button">{this.props.selectedList.length > 0 ? <Button negative onClick={this.props.handleListDelete}>Delete List</Button> : null}</div>
       </div>
     )
   }

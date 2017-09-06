@@ -5,7 +5,7 @@ class List extends Component {
   render(){
     return(
       <div>
-        <Button inverted color='grey'>{this.props.name}</Button><br/>
+        <Button inverted color='grey' onClick={this.props.setListItems}>{this.props.name}</Button><br/>
       </div>
     )
   }

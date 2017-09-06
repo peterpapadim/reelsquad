@@ -9,6 +9,10 @@ class ShowAdapter {
       body: JSON.stringify({title, refID, type, userID, listName})
     })
   }
+
+  static listShows(userID, listName){
+    return fetch(`http://localhost:3000/api/v1/users/${userID}/lists/${listName}/shows`)
+  }
 }
 
 export default ShowAdapter;
