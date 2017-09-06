@@ -95,7 +95,6 @@ class Home extends Component {
   }
 
   handleListDelete = () => {
-    console.log(this.state.selectedList)
     ListAdapter.delete(this.props.loginStatus.userID, this.state.selectedList)
     .then(resp => resp.json())
     .then(json => this.setLists(json))
@@ -103,6 +102,7 @@ class Home extends Component {
   }
 
   setFriends = () => {
+    this.setState({input: ''})
     this.setState({selectedList: ''})
     let context = this
     window.FB.api(

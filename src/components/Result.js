@@ -20,7 +20,6 @@ class Result extends Component {
 
 
   render(){
-    console.log(this.props.friend)
     return(
       this.props.friend ? <Friend friend={this.props.friend}/>
           :

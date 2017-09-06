@@ -56,7 +56,6 @@ class ResultsContainer extends Component {
   }
 
   render(){
-    console.log(this.state.searchResults)
     return(
       <div>
         <Card.Group>{this.displayResults()}</Card.Group>
