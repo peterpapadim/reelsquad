@@ -107,6 +107,19 @@ class Home extends Component {
     // .then(json => this.setLists(json))
   }
 
+  setFriends = () => {
+    this.setState({selectedList: ''})
+    let context = this
+    window.FB.api(
+        `/${this.props.loginStatus.userID}/friends`,
+        function (response) {
+          if (response && !response.error) {
+            context.setState({ resultsOnButtonClick: response.data })
+          }
+        }
+    );
+  }
+
   componentDidMount(){
     this.setUpcomingReleases()
   }
@@ -114,7 +127,7 @@ class Home extends Component {
   render(){
     console.log(this.state.selectedList)
     return(
-      <div>
+      <div className="home-page">
 
         <div className='left-column'>
           <div className='featured-content'>
@@ -128,7 +141,7 @@ class Home extends Component {
                     <Button inverted color='grey' onClick={this.setNewReleases}>New Releases</Button><br/>
                     <Button inverted color='grey' onClick={this.setPopularMovies}>Popular</Button><br/>
                     <Button inverted color='grey'>Genres</Button><br/>
-                    <Button inverted color='grey'>Friends</Button><br/>
+                    <Button inverted color='grey' onClick={this.setFriends}>My Friends</Button><br/>
                   </Segment>
                 </div>
             </div>

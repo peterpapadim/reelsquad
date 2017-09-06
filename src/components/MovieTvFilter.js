@@ -9,8 +9,8 @@ class MovieTvFilter extends Component {
 
   render(){
     return(
-      <div className='filter-buttons'>
-        <Button.Group onClick={this.handleFilterClick}>
+      <div className='filter-buttons-container'>
+        <Button.Group className='filter-buttons' onClick={this.handleFilterClick}>
           <Button value=''>All</Button>
           <Button.Or />
           <Button value='movies'>Movies</Button>

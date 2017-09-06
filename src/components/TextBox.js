@@ -9,8 +9,10 @@ class TextBox extends Component {
 
   render(){
     return(
-      <Input className='search-box' onChange={this.handleInput}
-        placeholder='Search Movies or TV Shows...'/>
+      <div className='search-box-container'>
+        <Input className='search-box' onChange={this.handleInput}
+          placeholder='Search Movies or TV Shows...'/>
+     </div>
     )
   }
 }
