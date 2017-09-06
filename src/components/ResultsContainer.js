@@ -41,7 +41,7 @@ class ResultsContainer extends Component {
       filteredResults = filteredResults.filter(movieOrShow => movieOrShow.media_type === 'tv')
     }
     return filteredResults.map((result, index) => {
-      if (Object.keys(result).includes('name')){
+      if (Object.keys(result).length === 2){
         return <Result key={result.id} friend={result} />
       } else {
         return <Result key={result.id} currentMovieOrShow={result} setSelectedItem={this.setSelectedItem}/>

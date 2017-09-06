@@ -17,7 +17,6 @@ class Home extends Component {
       input: '',
       selectedFilter: '',
       selectedList: '',
-      // selectedList: '',
       resultsOnButtonClick: [],
       allLists: []
     }
@@ -77,7 +76,6 @@ class Home extends Component {
     this.setState({selectedList: event.target.innerText})
     this.setState({input: ''})
     this.setState({resultsOnButtonClick: []})
-    // let selectedList = event.target.innerText
 
     ShowAdapter.listShows(this.props.loginStatus.userID, event.target.innerText)
     .then(resp => resp.json())
@@ -102,9 +100,6 @@ class Home extends Component {
     .then(resp => resp.json())
     .then(json => this.setLists(json))
     this.setNewReleases()
-    // ListAdapter.all(this.props.loginStatus.userID)
-    // .then(resp => resp.json())
-    // .then(json => this.setLists(json))
   }
 
   setFriends = () => {

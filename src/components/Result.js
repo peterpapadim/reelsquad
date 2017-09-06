@@ -7,16 +7,24 @@ import Friend from './Friend';
 
 class Result extends Component {
 
+  // constructor(){
+  //   super;
+  //   this.state = {
+  //
+  //   }
+  // }
+
   // handleCardClick = () => {
   //   this.props.setSelectedItem(this.props.currentMovieOrShow)
   // }
 
 
   render(){
+    console.log(this.props.friend)
     return(
-      this.props.currentMovieOrShow ?
-        <Show currentMovieOrShow={this.props.currentMovieOrShow} setSelectedItem={this.props.setSelectedItem}/>
-          : <Friend friend={this.props.friend}/>
+      this.props.friend ? <Friend friend={this.props.friend}/>
+          :
+      <Show currentMovieOrShow={this.props.currentMovieOrShow} setSelectedItem={this.props.setSelectedItem}/>
       // <Card onClick={this.handleCardClick}>
       //   <Image src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='medium' />
       //   <Card.Content>
