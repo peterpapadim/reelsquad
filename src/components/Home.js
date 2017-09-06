@@ -3,8 +3,11 @@ import Logout from './Logout'
 import TextBox from './TextBox'
 import MovieTvFilter from './MovieTvFilter'
 import ResultsContainer from './ResultsContainer'
+import ListsContainer from './ListsContainer'
 import { Grid, Button, Segment } from 'semantic-ui-react'
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
+import ShowAdapter from '../adapters/ShowAdapter';
+import ListAdapter from '../adapters/ListAdapter';
 
 class Home extends Component {
 
@@ -13,8 +16,19 @@ class Home extends Component {
     this.state = {
       input: '',
       selectedFilter: '',
-      resultsOnButtonClick: []
+      selectedList: '',
+      // selectedList: '',
+      resultsOnButtonClick: [],
+      allLists: []
     }
+  }
+
+  setLists = (lists) => {
+    this.setState({ allLists: [...lists] })
+  }
+
+  setSelectedList = () => {
+    this.setState({ selectedList: '' })
   }
 
   setInput = (newInput) => {
@@ -31,6 +45,7 @@ class Home extends Component {
 
   setUpcomingReleases = () => {
     this.setState({input: ''})
+    this.setState({selectedList: ''})
     MovieApiAdapter.upcomingReleases()
     .then(resp => resp.json())
     .then(json => {
@@ -40,6 +55,7 @@ class Home extends Component {
 
   setNewReleases = () => {
     this.setState({input: ''})
+    this.setState({selectedList: ''})
     MovieApiAdapter.newReleases()
     .then(resp => resp.json())
     .then(json => {
@@ -49,6 +65,7 @@ class Home extends Component {
 
   setPopularMovies = () => {
     this.setState({input: ''})
+    this.setState({selectedList: ''})
     MovieApiAdapter.popularMovies()
     .then(resp => resp.json())
     .then(json => {
@@ -56,7 +73,46 @@ class Home extends Component {
     })
   }
 
+  setListItems = (event) => {
+    this.setState({selectedList: event.target.innerText})
+    this.setState({input: ''})
+    this.setState({resultsOnButtonClick: []})
+    // let selectedList = event.target.innerText
+
+    ShowAdapter.listShows(this.props.loginStatus.userID, event.target.innerText)
+    .then(resp => resp.json())
+    .then(json => {
+      json.map((show) => {
+        if(show.show_type === 'tv'){
+          MovieApiAdapter.getTVByID(show.reference_id)
+          .then(resp => resp.json())
+          .then(json => this.setState({ resultsOnButtonClick: [...this.state.resultsOnButtonClick, json] }))
+        } else {
+          MovieApiAdapter.getMovieByID(show.reference_id)
+          .then(resp => resp.json())
+          .then(json => this.setState({ resultsOnButtonClick: [...this.state.resultsOnButtonClick, json] }))
+        }
+      })
+    })
+  }
+
+  handleListDelete = () => {
+    console.log(this.state.selectedList)
+    ListAdapter.delete(this.props.loginStatus.userID, this.state.selectedList)
+    .then(resp => resp.json())
+    .then(json => this.setLists(json))
+    this.setNewReleases()
+    // ListAdapter.all(this.props.loginStatus.userID)
+    // .then(resp => resp.json())
+    // .then(json => this.setLists(json))
+  }
+
+  componentDidMount(){
+    this.setUpcomingReleases()
+  }
+
   render(){
+    console.log(this.state.selectedList)
     return(
       <div>
 
@@ -79,7 +135,8 @@ class Home extends Component {
           </div>
           <div className='lists-user'>
             <div className='lists'>
-              <h3>Lists</h3>
+              <h3>My Lists</h3>
+              <ListsContainer userID={this.props.loginStatus.userID} setLists={this.setLists} allLists={this.state.allLists} setListItems={this.setListItems}/>
             </div>
             <div className='user'>
               <p>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}</p>
@@ -94,7 +151,7 @@ class Home extends Component {
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>
           <div className='results'>
-            <ResultsContainer input={this.state.input} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick}/>
+            <ResultsContainer input={this.state.input} selectedList={this.state.selectedList} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists} userID={this.props.loginStatus.userID} handleListDelete={this.handleListDelete}/>
           </div>
         </div>
 

@@ -71,6 +71,17 @@
   border-bottom: solid;
   border-width: medium;
   border-color: #A0A0A0;
+  overflow-y: auto;
+}
+
+.new-list-submit {
+  padding-top: 4px;
+}
+
+.delete-list-button {
+  /*text-align: center;*/
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .user {

@@ -69,6 +69,22 @@ class MovieApiAdapter {
     }
   }
 
+  static getNameTypeID = (currentMovieOrShow) => {
+    if(Object.keys(currentMovieOrShow).includes('original_name')){
+      return {title: currentMovieOrShow.original_name, type: 'tv', id: currentMovieOrShow.id}
+    } else {
+      return {title: currentMovieOrShow.original_title, type: 'movie', id: currentMovieOrShow.id}
+    }
+  }
+
+  static getMovieByID = (movieID) => {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+  }
+
+  static getTVByID = (tvID) => {
+    return fetch(`https://api.themoviedb.org/3/tv/${tvID}?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
+  }
+
   static youtubeURL = (id) => {
     return `https://www.youtube.com/embed/${id}`
   }
@@ -80,6 +96,8 @@ class MovieApiAdapter {
       return fetch(`https://api.themoviedb.org/3/movie/${selectedItem.id}/videos?api_key=e5a611fc95f5e1b8c6b311447c94ee76&language=en-US`)
     }
   }
+
+
 }
 
 export default MovieApiAdapter;
