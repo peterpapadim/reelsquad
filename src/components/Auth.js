@@ -15,7 +15,8 @@ class Auth extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      dataID: 0
+      dataID: 0,
+      profilePicURL: ''
     }
   }
 
@@ -40,6 +41,14 @@ class Auth extends Component {
             dataID: json
           })
         )
+        window.FB.api(
+            `/${user.authResponse.userID}/picture`,
+            (response) => {
+              if (response && !response.error) {
+                this.setState({ profilePicURL: response.data.url })
+              }
+            }
+        );
       })
   }
 
@@ -53,7 +62,8 @@ class Auth extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      dataID: 0
+      dataID: 0,
+      profilePicURL: ''
     })
   }
 

@@ -60,7 +60,13 @@
 }
 
 .ui.inverted.button {
-  width: 80%;
+  width: 75%;
+  border-radius: 15px;
+}
+
+.ui.inverted.button:hover {
+  background: white !important;
+  /*border: 1px solid yellow;*/
 }
 
 .lists-user {
@@ -89,11 +95,59 @@
   padding-bottom: 2%;
 }
 
-.user {
+.add-user-button {
   text-align: center;
-  padding-top: 2%;
-  color: white;
+}
+
+.user {
+  /*text-align: center;*/
+  /*padding-top: 2%;*/
+  /*color: white;*/
   height: 20%;
+}
+
+.user-name-container {
+  width: 100%;
+  height: 25%;
+}
+
+.user-name {
+  padding-top: 3%;
+  color: white;
+  text-align: center;
+}
+
+.logout-container {
+  /*text-align: center;*/
+  height: 75%;
+}
+
+.user-image-container {
+  float: left;
+  text-align: center;
+  /*border: 2px solid white;*/
+  height: 100%;
+  width: 50%;
+}
+
+.logout-button-container {
+  float:  left;
+  text-align: center;
+  /*border: 2px solid white;*/
+  height: 100%;
+  width: 50%;
+}
+
+.user-image {
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-top: 5%;
+  margin-left: 20%;
+}
+
+.logout-button {
+  margin-top: 11%;
+  margin-right: 35%;
 }
 
 .search {
@@ -131,6 +185,52 @@
   padding-left: 2%;
   padding-top: 2%;
   overflow-y: auto;
+}
+
+.results-container {
+  /*background: red;*/
+  /*text-align: center;*/
+}
+
+.add-friend-list {
+  position: absolute;
+  margin-left: 30%;
+  margin-top: 10%;
+  height: 40%;
+  width: 20%;
+  z-index: 1;
+  background: white;
+  border: 3px solid lightgrey;
+  border-radius: 3%;
+}
+
+.friend-list {
+  height: 85%;
+  background: lightgrey;
+  text-align: center;
+  border: 2px solid lightgrey;
+  border-radius: 3%;
+}
+
+.friend-list-buttons {
+  padding-top: 5%;
+  /*text-align: center;*/
+  height: 15%;
+  /*background: blue;*/
+}
+
+.save-friend-button {
+  text-align: center;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.cancel-button {
+  text-align: center;
+  float: right;
+  width: 50%;
+  height: 100%;
 }
 
 /* The Modal (background) */
@@ -220,4 +320,9 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
+}
+
+i.big.icon:hover {
+  font-size: 3em;
+  cursor: pointer;
 }

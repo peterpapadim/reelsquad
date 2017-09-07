@@ -21,7 +21,7 @@ class Result extends Component {
 
   render(){
     return(
-      this.props.friend ? <Friend friend={this.props.friend}/>
+      this.props.friend ? <Friend friend={this.props.friend} count={this.props.count}/>
           :
       <Show currentMovieOrShow={this.props.currentMovieOrShow} setSelectedItem={this.props.setSelectedItem}/>
       // <Card onClick={this.handleCardClick}>

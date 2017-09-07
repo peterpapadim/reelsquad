@@ -9,6 +9,10 @@ class UserAdapter {
       body: JSON.stringify({firstName, lastName, email, userID})
     })
   }
+
+  static show(userID){
+    return fetch(`http://localhost:3000/api/v1/users/${userID}`)
+  }
 }
 
 export default UserAdapter;

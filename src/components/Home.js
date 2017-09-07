@@ -104,12 +104,11 @@ class Home extends Component {
   setFriends = () => {
     this.setState({input: ''})
     this.setState({selectedList: ''})
-    let context = this
     window.FB.api(
         `/${this.props.loginStatus.userID}/friends`,
-        function (response) {
+        (response) => {
           if (response && !response.error) {
-            context.setState({ resultsOnButtonClick: response.data })
+            this.setState({ resultsOnButtonClick: response.data })
           }
         }
     );
@@ -147,8 +146,19 @@ class Home extends Component {
               <ListsContainer userID={this.props.loginStatus.userID} setLists={this.setLists} allLists={this.state.allLists} setListItems={this.setListItems}/>
             </div>
             <div className='user'>
-              <p>{this.props.loginStatus.firstName} {this.props.loginStatus.lastName}</p>
-              <p><Logout /></p>
+              <div className='user-name-container'>
+                <div className='user-name'>
+                  {this.props.loginStatus.firstName} {this.props.loginStatus.lastName}
+                </div>
+              </div>
+              <div className='logout-container'>
+                <div className='user-image-container'>
+                  <img className='user-image' src={this.props.loginStatus.profilePicURL}/>
+                </div>
+                <div className='logout-button-container'>
+                  <div className='logout-button'><Logout /></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

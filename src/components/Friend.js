@@ -1,22 +1,57 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
+import UserAdapter from '../adapters/UserAdapter'
 
-const Friend = (props) => {
-  return(
-    <Card>
-      <Card.Content>
-        <Card.Header>
-          {props.friend.name}
-        </Card.Header>
-        <Card.Meta>
-          <span>
-            blah blah
-          </span>
-        </Card.Meta>
-        <Card.Description>blahhhhhh</Card.Description>
-      </Card.Content>
-    </Card>
-  )
+class Friend extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      profilePicURL: '',
+      memberSince: ''
+    }
+  }
+
+
+  componentDidMount(){
+    window.FB.api(
+        `/${this.props.friend.id}/picture?height=1000`,
+        (response) => {
+          if (response && !response.error) {
+            this.setState({ profilePicURL: response.data.url })
+          }
+        }
+    );
+
+    UserAdapter.show(this.props.friend.id)
+    .then(resp => resp.json())
+    .then(json => {
+      let date = new Date(json.created_at)
+      date = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+      this.setState({ memberSince: date })
+    })
+  }
+
+
+  render(){
+    return(
+      <Card size='small'>
+        <Image src={this.state.profilePicURL} size='medium' />
+        <Card.Content>
+          <Card.Header>
+            {this.props.friend.name}
+          </Card.Header>
+          <Card.Meta>
+            <span>
+              {this.props.count + 1}
+            </span>
+          </Card.Meta>
+          <Card.Description>Member Since: {this.state.memberSince}</Card.Description>
+        </Card.Content>
+      </Card>
+    )
+  }
+
 }
 
 export default Friend;
