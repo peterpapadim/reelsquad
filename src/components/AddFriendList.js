@@ -4,13 +4,31 @@ import { List, Image, Checkbox } from 'semantic-ui-react';
 
 class AddFriendList extends Component {
 
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     updatedFriends: []
+  //   }
+  // }
+
+  // addOrRemove = (friend, addOrRemove) => {
+  //   if(addOrRemove){
+  //     this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] })
+  //   } else {
+  //     if(this.state.updatedFriends.includes(friend.id)){
+  //       let filteredResults = this.state.updatedFriends.filter(friendID => friendID !== friend.id)
+  //       this.setState({ updatedFriends: filteredResults})
+  //     }
+  //   }
+  // }
+
   renderFriendsList = () => {
-    return this.props.friends.map( friend => <AddFriendListItem friend={friend}/>)
+    return this.props.friends.map( friend => <AddFriendListItem key={friend.id} friend={friend} listFriends={this.props.listFriends} addOrRemove={this.props.addOrRemove} updatedFriends={this.props.updatedFriends}/>)
   }
 
   render(){
     return(
-      <List selection verticalAlign='left'>
+      <List divided verticalAlign='middle'>
         {this.renderFriendsList()}
       </List>
     )

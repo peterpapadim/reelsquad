@@ -206,17 +206,20 @@
 
 .friend-list {
   height: 85%;
-  background: lightgrey;
+  background: white;
   text-align: center;
-  border: 2px solid lightgrey;
+  padding-top: 4%;
+  border: 2px solid white;
   border-radius: 3%;
+  color: black;
+  overflow-y: scroll;
 }
 
 .friend-list-buttons {
   padding-top: 5%;
   /*text-align: center;*/
   height: 15%;
-  /*background: blue;*/
+  background: lightgrey;
 }
 
 .save-friend-button {

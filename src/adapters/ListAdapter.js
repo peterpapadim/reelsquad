@@ -27,6 +27,22 @@ class ListAdapter {
     })
   }
 
+  static listShowsUsers(userID, listName){
+    // return fetch(`https://reelsquad-api.herokuapp.com/api/v1/users/${userID}/lists/${listName}/shows`)
+    return fetch(`http://localhost:3000/api/v1/users/${userID}/lists/${listName}/shows-users`)
+  }
+
+  static updateUsers(userID, updatedFriends, listName){
+    let header = new Headers
+    header.set('Content-Type', 'application/json')
+    // return fetch(`https://reelsquad-api.herokuapp.com/api/v1/users/${userID}/lists/${listName}/users/update`, {
+    return fetch(`http://localhost:3000/api/v1/users/${userID}/lists/${listName}/users/update`, {
+      method:"POST",
+      headers: header,
+      body: JSON.stringify({userID, updatedFriends, listName})
+    })
+  }
+
 }
 
 export default ListAdapter;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, Icon} from 'semantic-ui-react'
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
+import ListAdapter from '../adapters/ListAdapter';
 import Result from './Result';
 import Modal from './Modal';
 import AddFriendList from './AddFriendList';
@@ -12,6 +13,7 @@ class ResultsContainer extends Component {
       searchResults: [],
       selectedItem: null,
       friends: [],
+      updatedFriends: [],
       addUserClicked: false
     }
   }
@@ -87,8 +89,29 @@ class ResultsContainer extends Component {
     }
   }
 
+  addOrRemove = (friend, addOrRemove) => {
+    if(addOrRemove){
+      this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] })
+    } else {
+      if(this.state.updatedFriends.includes(friend.id)){
+        let filteredResults = this.state.updatedFriends.filter(friendID => friendID !== friend.id)
+        this.setState({ updatedFriends: filteredResults})
+      }
+    }
+  }
+
   handleCancelClick = () => {
     this.setState({ addUserClicked: false })
+    this.setState({ updatedFriends: [] })
+  }
+
+  handleSaveClick = () => {
+    let userID = this.props.userID
+    let updatedFriends = this.state.updatedFriends
+    let listName = this.props.selectedList
+    ListAdapter.updateUsers(userID, updatedFriends, listName)
+    .then(resp => resp.json())
+    .then(json => this.props.setListFriends(json))
   }
 
   render(){
@@ -97,11 +120,11 @@ class ResultsContainer extends Component {
         {this.state.addUserClicked ?
           <div className='add-friend-list'>
             <div className='friend-list'>
-              <AddFriendList friends={this.state.friends}/>
+              <AddFriendList friends={this.state.friends} listFriends={this.props.listFriends} updatedFriends={this.state.updatedFriends} addOrRemove={this.addOrRemove}/>
             </div>
             <div className='friend-list-buttons'>
               <div className='save-friend-button'>
-                <Button color='teal'>Add User(s)</Button>
+                <Button color='green' onClick={this.handleSaveClick}>Save</Button>
              </div>
               <div className='cancel-button'>
                 <Button color='red' onClick={this.handleCancelClick}>Cancel</Button>
