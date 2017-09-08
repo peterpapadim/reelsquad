@@ -61,7 +61,6 @@ class Modal extends Component {
 
   handleSelectedListSubmit = () => {
     let selectedItemDetails = MovieApiAdapter.getNameTypeID(this.props.selectedItem)
-    console.log(selectedItemDetails)
     ShowAdapter.create(selectedItemDetails.title, selectedItemDetails.id, selectedItemDetails.type, this.props.userID, this.state.selectedList)
     this.setState({ selectedList: '' })
     // this.props.setSelectedList('')
