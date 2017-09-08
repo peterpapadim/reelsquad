@@ -119,7 +119,6 @@ class Home extends Component {
   }
 
   render(){
-    console.log(this.state.selectedList)
     return(
       <div className="home-page">
 

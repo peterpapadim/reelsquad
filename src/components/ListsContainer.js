@@ -62,7 +62,6 @@ class ListsContainer extends Component {
   }
 
   render(){
-    console.log(this.props.allLists)
     return(
       <div className="lists-container">
         <div className="add-list-button">

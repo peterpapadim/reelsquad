@@ -92,7 +92,6 @@ class ResultsContainer extends Component {
   }
 
   render(){
-    console.log(this.state.friends)
     return(
       <div>
         {this.state.addUserClicked ?
