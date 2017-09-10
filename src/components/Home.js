@@ -109,7 +109,6 @@ class Home extends Component {
     window.FB.api(
         `/${this.props.loginStatus.userID}/friends`,
         (response) => {
-          console.log(response)
           if (response && !response.error) {
             this.setState({ resultsOnButtonClick: response.data })
           }

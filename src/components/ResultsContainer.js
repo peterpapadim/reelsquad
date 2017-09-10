@@ -82,7 +82,6 @@ class ResultsContainer extends Component {
   }
 
   handleAddUserClick = () => {
-    console.log(this.props.listFriends)
     if(this.state.addUserClicked){
       this.setState({ addUserClicked: false })
       this.setState({ updatedFriends: [] })
@@ -91,9 +90,15 @@ class ResultsContainer extends Component {
     }
   }
 
+  setUpdatedFriends = (friendIDs) => {
+    this.setState({ updatedFriends: friendIDs })
+  }
+
   addOrRemove = (friend, addOrRemove) => {
     if(addOrRemove){
-      this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] }, console.log(this.state.updatedFriends))
+      if(!this.state.updatedFriends.includes(friend.id)){
+        this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] })
+      }
     } else {
       if(this.state.updatedFriends.includes(friend.id)){
         let newUpdatedFriends = this.state.updatedFriends
@@ -125,8 +130,6 @@ class ResultsContainer extends Component {
   }
 
   render(){
-    console.log(this.props.listFriends)
-    console.log(this.state.updatedFriends)
     return(
       <div>
         <div className='friends-in-list'>
@@ -134,7 +137,7 @@ class ResultsContainer extends Component {
         {this.state.addUserClicked ?
           <div className='add-friend-list'>
             <div className='friend-list'>
-              <AddFriendList friends={this.state.friends} listFriends={this.props.listFriends} updatedFriends={this.state.updatedFriends} addOrRemove={this.addOrRemove}/>
+              <AddFriendList friends={this.state.friends} listFriends={this.props.listFriends} updatedFriends={this.state.updatedFriends} setUpdatedFriends={this.setUpdatedFriends} addOrRemove={this.addOrRemove}/>
             </div>
             <div className='friend-list-buttons'>
               <div className='save-friend-button'>

@@ -12,13 +12,12 @@ class AddFriendListItem extends Component {
 
   componentDidMount(){
     let existing = this.props.listFriends.filter(listFriend => listFriend.fb_id === this.props.friend.id)
-    console.log(existing)
     if(existing.length > 0){
       this.setState({ added: true })
-      this.props.addOrRemove(this.props.friend, true)
+      // this.props.addOrRemove(this.props.friend, true)
     } else {
       this.setState({ added: false })
-      this.props.addOrRemove(this.props.friend, false)
+      // this.props.addOrRemove(this.props.friend, false)
     }
   }
 
@@ -33,7 +32,6 @@ class AddFriendListItem extends Component {
   }
 
   render(){
-    console.log(this.props.updatedFriends)
     return(
     <List.Item>
       <List.Content floated='right'>

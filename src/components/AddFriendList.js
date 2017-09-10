@@ -22,11 +22,18 @@ class AddFriendList extends Component {
   //   }
   // }
 
+  componentDidMount(){
+    let friendIDs = this.props.listFriends.map(friend => friend.fb_id)
+    this.props.setUpdatedFriends(friendIDs)
+  }
+
+
   renderFriendsList = () => {
     return this.props.friends.map( friend => <AddFriendListItem key={friend.id} friend={friend} listFriends={this.props.listFriends} addOrRemove={this.props.addOrRemove} updatedFriends={this.props.updatedFriends}/>)
   }
 
   render(){
+    console.log(this.props.updatedFriends)
     return(
       <List divided verticalAlign='middle'>
         {this.renderFriendsList()}
