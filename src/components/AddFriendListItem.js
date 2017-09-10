@@ -11,7 +11,8 @@ class AddFriendListItem extends Component {
   }
 
   componentDidMount(){
-    let existing = this.props.listFriends.filter((listFriend) => { return listFriend.fb_id === this.props.friend.id })
+    let existing = this.props.listFriends.filter(listFriend => listFriend.fb_id === this.props.friend.id)
+    console.log(existing)
     if(existing.length > 0){
       this.setState({ added: true })
       this.props.addOrRemove(this.props.friend, true)

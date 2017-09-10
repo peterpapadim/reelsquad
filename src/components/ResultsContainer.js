@@ -82,8 +82,10 @@ class ResultsContainer extends Component {
   }
 
   handleAddUserClick = () => {
+    console.log(this.props.listFriends)
     if(this.state.addUserClicked){
       this.setState({ addUserClicked: false })
+      this.setState({ updatedFriends: [] })
     } else {
       this.setState({ addUserClicked: true })
     }
@@ -91,12 +93,18 @@ class ResultsContainer extends Component {
 
   addOrRemove = (friend, addOrRemove) => {
     if(addOrRemove){
-      this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] })
+      this.setState({ updatedFriends: [...this.state.updatedFriends, friend.id] }, console.log(this.state.updatedFriends))
     } else {
       if(this.state.updatedFriends.includes(friend.id)){
-        let filteredResults = this.state.updatedFriends.filter(friendID => friendID !== friend.id)
-        this.setState({ updatedFriends: filteredResults})
+        let newUpdatedFriends = this.state.updatedFriends
+        let index = newUpdatedFriends.indexOf(friend.id)
+        newUpdatedFriends.splice(index, 1)
+        this.setState({ updatedFriends: newUpdatedFriends })
       }
+      // if(this.state.updatedFriends.includes(friend.id)){
+      //   let filteredResults = this.state.updatedFriends.filter(friendID => friendID !== friend.id)
+      //   this.setState({ updatedFriends: filteredResults})
+      // }
     }
   }
 
@@ -112,11 +120,17 @@ class ResultsContainer extends Component {
     ListAdapter.updateUsers(userID, updatedFriends, listName)
     .then(resp => resp.json())
     .then(json => this.props.setListFriends(json))
+    this.setState({ updatedFriends: [] })
+    this.setState({ addUserClicked: false })
   }
 
   render(){
+    console.log(this.props.listFriends)
+    console.log(this.state.updatedFriends)
     return(
       <div>
+        <div className='friends-in-list'>
+        </div>
         {this.state.addUserClicked ?
           <div className='add-friend-list'>
             <div className='friend-list'>
