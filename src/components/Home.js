@@ -18,7 +18,8 @@ class Home extends Component {
       selectedFilter: '',
       selectedList: '',
       resultsOnButtonClick: [],
-      allLists: []
+      allLists: [],
+      listFriends: []
     }
   }
 
@@ -77,10 +78,10 @@ class Home extends Component {
     this.setState({input: ''})
     this.setState({resultsOnButtonClick: []})
 
-    ShowAdapter.listShows(this.props.loginStatus.userID, event.target.innerText)
+    ListAdapter.listShowsUsers(this.props.loginStatus.userID, event.target.innerText)
     .then(resp => resp.json())
     .then(json => {
-      json.map((show) => {
+      json.shows.map((show) => {
         if(show.show_type === 'tv'){
           MovieApiAdapter.getTVByID(show.reference_id)
           .then(resp => resp.json())
@@ -91,6 +92,7 @@ class Home extends Component {
           .then(json => this.setState({ resultsOnButtonClick: [...this.state.resultsOnButtonClick, json] }))
         }
       })
+      this.setState({ listFriends: json.users })
     })
   }
 
@@ -112,6 +114,10 @@ class Home extends Component {
           }
         }
     );
+  }
+
+  setListFriends = (listFriends) => {
+    this.setState({ listFriends: listFriends})
   }
 
   componentDidMount(){
@@ -168,7 +174,7 @@ class Home extends Component {
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>
           <div className='results'>
-            <ResultsContainer input={this.state.input} selectedList={this.state.selectedList} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists} userID={this.props.loginStatus.userID} handleListDelete={this.handleListDelete}/>
+            <ResultsContainer input={this.state.input} selectedList={this.state.selectedList} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists} userID={this.props.loginStatus.userID} handleListDelete={this.handleListDelete} listFriends={this.state.listFriends} setListFriends={this.setListFriends}/>
           </div>
         </div>
 
