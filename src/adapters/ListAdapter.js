@@ -28,7 +28,7 @@ class ListAdapter {
   }
 
   static listShowsUsers(userID, listName){
-    return fetch(`https://reelsquad-api.herokuapp.com/api/v1/users/${userID}/lists/${listName}/shows`)
+    return fetch(`https://reelsquad-api.herokuapp.com/api/v1/users/${userID}/lists/${listName}/shows-users`)
     // return fetch(`http://localhost:3000/api/v1/users/${userID}/lists/${listName}/shows-users`)
   }
 
