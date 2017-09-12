@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import App from '../App'
-import UserAdapter from '../adapters/UserAdapter'
+import App from '../App';
+import Login from './Login';
+import UserAdapter from '../adapters/UserAdapter';
+
 
 class Auth extends Component {
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       loggedIn: false,
       accessToken: '',
@@ -68,7 +70,7 @@ class Auth extends Component {
   }
 
   componentDidMount(){
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = () => {
       window.FB.init({
         appId      : '459547347771719',
         cookie     : true,
@@ -87,10 +89,12 @@ class Auth extends Component {
       window.FB.getLoginStatus( (response) => {
         if (response.status === 'connected') {
           this.updateLoggedInState(response)
+        } else{
+          this.updateLoggedOutState()
         }
       });
 
-    }.bind(this);
+    };
 
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -101,9 +105,13 @@ class Auth extends Component {
     }(document, 'script', 'facebook-jssdk'));
   }
 
+
   render() {
+    console.log(this.state.loggedIn)
     return(
-      <App loginStatus={this.state} />
+      <div>
+      { this.state.loggedIn ? <App loginStatus={this.state}/> : <div className='login-screen'><Login loginStatus={this.state}/></div> }
+    </div>
     )
   }
 

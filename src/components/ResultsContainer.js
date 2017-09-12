@@ -14,13 +14,25 @@ class ResultsContainer extends Component {
       selectedItem: null,
       friends: [],
       updatedFriends: [],
+      listFriendsImages: [],
       addUserClicked: false
     }
   }
 
+  setFriendImages = (friendID) => {
+    window.FB.api(
+        `/${friendID}/picture?height=1000`,
+        (response) => {
+          if (response && !response.error) {
+            if(!this.state.listFriendsImages.includes(response.data.url)){
+              this.setState({ listFriendsImages: [...this.state.listFriendsImages, response.data.url] })
+            }
+          }
+        })
+  }
+
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.input !== ''){
-      // this.props.setSelectedList()
       let inputURI = nextProps.input.split(' ').join('%20')
       MovieApiAdapter.searchResults(inputURI)
       .then(resp => resp.json())
@@ -31,8 +43,10 @@ class ResultsContainer extends Component {
       })
     }
     else if(nextProps.resultsOnButtonClick.length > 0){
+      // nextProps.listFriends.forEach(friend => this.setFriendImages(friend.fb_id))
       this.setState({searchResults: nextProps.resultsOnButtonClick})
     } else {
+      // nextProps.listFriends.forEach(friend => this.setFriendImages(friend.fb_id))
       this.setState({searchResults: [] })
     }
   }
@@ -113,6 +127,7 @@ class ResultsContainer extends Component {
     }
   }
 
+
   handleCancelClick = () => {
     this.setState({ addUserClicked: false })
     this.setState({ updatedFriends: [] })
@@ -129,11 +144,13 @@ class ResultsContainer extends Component {
     this.setState({ addUserClicked: false })
   }
 
+
   render(){
+    console.log(this.state.listFriendsImages)
     return(
       <div>
-        <div className='friends-in-list'>
-        </div>
+        {this.props.selectedList.length > 0 ? <div className='friends-in-list'>
+        </div> : null}
         {this.state.addUserClicked ?
           <div className='add-friend-list'>
             <div className='friend-list'>
