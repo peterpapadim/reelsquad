@@ -63,9 +63,9 @@ class MovieApiAdapter {
 
   static getImageUrl = (posterPath) => {
     if(posterPath) {
-      return `https://image.tmdb.org/t/p/w185/${posterPath}`
+      return `https://image.tmdb.org/t/p/w780/${posterPath}`
     } else {
-      return 'no_image.jpg'
+      return 'noposteravailable.svg'
     }
   }
 

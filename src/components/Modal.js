@@ -76,11 +76,13 @@ class Modal extends Component {
             </div>
             <div className="modal-content-details-container">
               <div className="modal-content-details">
-               <p className="title">{MovieApiAdapter.getTitle(this.props.selectedItem)}</p>
-               <p className="overview">{this.props.selectedItem.overview}</p>
-               <Dropdown className="dropdown" placeholder='Add to...' search selection options={this.dropdownOptions()} onChange={this.handleSelectedListChange}/>
-               <Button className="save" color='teal' onClick={this.handleSelectedListSubmit}>Save</Button>
-               {this.state.contentSaved ? <p>Successfully Saved!</p> : null}
+               <div className="title-container"><div className="title">{MovieApiAdapter.getTitle(this.props.selectedItem)}</div></div>
+               <div className="overview-container"><div className="overview">{this.props.selectedItem.overview}</div></div>
+               <div className="dropdown-save-container">
+                 <div className="dropdown-container"><div className="dropdown"><Dropdown placeholder='Add to list...' search selection options={this.dropdownOptions()} onChange={this.handleSelectedListChange}/></div></div>
+                 <div className="save-container"><div className="save"><Button color='teal' onClick={this.handleSelectedListSubmit}>Save</Button></div></div>
+                 <div className="saved-message">{this.state.contentSaved ? <p>Successfully Saved!</p> : null}</div>
+              </div>
               </div>
             </div>
             <div className="close" onClick={this.clearSelectedItem} >&times;</div>

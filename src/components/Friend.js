@@ -35,8 +35,8 @@ class Friend extends Component {
 
   render(){
     return(
-      <Card size='small'>
-        <Image src={this.state.profilePicURL} size='medium' />
+      <Card className="friend-card-content" centered="true">
+        <Image src={this.state.profilePicURL} size='small' centered="true" />
         <Card.Content>
           <Card.Header>
             {this.props.friend.name}

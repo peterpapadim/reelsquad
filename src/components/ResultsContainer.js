@@ -19,17 +19,17 @@ class ResultsContainer extends Component {
     }
   }
 
-  setFriendImages = (friendID) => {
-    window.FB.api(
-        `/${friendID}/picture?height=1000`,
-        (response) => {
-          if (response && !response.error) {
-            if(!this.state.listFriendsImages.includes(response.data.url)){
-              this.setState({ listFriendsImages: [...this.state.listFriendsImages, response.data.url] })
-            }
-          }
-        })
-  }
+  // setFriendImages = (friendID) => {
+  //   window.FB.api(
+  //       `/${friendID}/picture?height=1000`,
+  //       (response) => {
+  //         if (response && !response.error) {
+  //           if(!this.state.listFriendsImages.includes(response.data.url)){
+  //             this.setState({ listFriendsImages: [...this.state.listFriendsImages, response.data.url] })
+  //           }
+  //         }
+  //       })
+  // }
 
   componentWillReceiveProps = (nextProps) => {
     if(nextProps.input !== ''){
@@ -146,7 +146,6 @@ class ResultsContainer extends Component {
 
 
   render(){
-    console.log(this.state.listFriendsImages)
     return(
       <div>
         {this.props.selectedList.length > 0 ? <div className='friends-in-list'>

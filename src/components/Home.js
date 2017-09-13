@@ -131,15 +131,17 @@ class Home extends Component {
         <div className='left-column'>
           <div className='featured-content'>
             <div className='logo-container'>
+              <div className="logo">
+                <img src="logo_white.svg"/>
+              </div>
             </div>
             <div className='featured-links-container'>
-              <h3>Featured</h3>
-                <div>
+                <div className='featured-links-items'>
+                  <h3>Featured</h3>
                   <Segment inverted>
                     <Button inverted color='grey' onClick={this.setUpcomingReleases}>Upcoming Movies</Button><br/>
                     <Button inverted color='grey' onClick={this.setNewReleases}>New Releases</Button><br/>
                     <Button inverted color='grey' onClick={this.setPopularMovies}>Popular</Button><br/>
-                    <Button inverted color='grey'>Genres</Button><br/>
                     <Button inverted color='grey' onClick={this.setFriends}>My Friends</Button><br/>
                   </Segment>
                 </div>

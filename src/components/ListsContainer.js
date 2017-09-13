@@ -27,6 +27,7 @@ class ListsContainer extends Component {
   }
 
   handleNewListClick = () => {
+    this.props.clearFriendsInList()
     this.setState({
       displayAddButton: false,
       displayInputAndSubmit: true

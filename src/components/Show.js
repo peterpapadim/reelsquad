@@ -10,8 +10,8 @@ class Show extends Component {
 
   render(){
     return(
-      <Card onClick={this.handleCardClick}>
-        <Image src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='medium' />
+      <Card className="card-content" centered="true" onClick={this.handleCardClick} size="tiny">
+          <Image centered="true" src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='small' />
         <Card.Content>
           <Card.Header>
             {MovieApiAdapter.getTitle(this.props.currentMovieOrShow)}
