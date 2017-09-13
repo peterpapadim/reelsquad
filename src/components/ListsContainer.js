@@ -27,7 +27,6 @@ class ListsContainer extends Component {
   }
 
   handleNewListClick = () => {
-    this.props.clearFriendsInList()
     this.setState({
       displayAddButton: false,
       displayInputAndSubmit: true
@@ -65,10 +64,10 @@ class ListsContainer extends Component {
   render(){
     return(
       <div className="lists-container">
-        <div className="add-list-button">
+        <div className="add-list-button-container">
           {this.state.displayAddButton ?
             <Popup
-              trigger={<Button onClick={this.handleNewListClick} icon='add' />}
+              trigger={<Button className="add-list-button" onClick={this.handleNewListClick} />}
               content="Create New List"
               basic
             /> :

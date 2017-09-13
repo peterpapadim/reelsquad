@@ -87,7 +87,7 @@ class Modal extends Component {
             </div>
             <div className="close" onClick={this.clearSelectedItem} >&times;</div>
             <div className="video-content-container">
-              <div className="video-content">{this.state.currentVideo ? <iframe height="100%" width="100%" src={this.state.currentVideo} allowFullScreen="allowFullScreen"></iframe> : <img src='no-video.jpg' alt="No Video" height="100%" width="100%"></img> }</div>
+              <div className="video-content">{this.state.currentVideo ? <iframe height="100%" width="100%" src={this.state.currentVideo} allowFullScreen="allowFullScreen"></iframe> : <img src='novideoavailable.svg' alt="No Video" height="100%" width="100%"></img> }</div>
             </div>
           </div>
         </div>

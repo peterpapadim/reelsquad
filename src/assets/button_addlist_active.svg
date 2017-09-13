@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>button_addlist_active</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-V2-Copy" transform="translate(-89.000000, -471.000000)">
+            <g id="button_addlist_active" transform="translate(89.000000, 471.000000)">
+                <path d="M14.5,16 L12,16 L12,15 L14.5,15 L14.5,12.4792808 L15.5,12.4792808 L15.5,15 L18,15 L18,16 L15.5,16 L15.5,18.5226805 L14.5,18.5226805 L14.5,16 Z M20,40 C31.045695,40 40,31.045695 40,20 C40,8.954305 31.045695,0 20,0 C8.954305,0 0,8.954305 0,20 C0,31.045695 8.954305,40 20,40 Z M12,21 L28.0384048,21 L28.0384048,20 L12,20 L12,21 Z M12,26 L28.0384048,26 L28.0384048,25 L12,25 L12,26 Z M20,16 L28.0384048,16 L28.0384048,15 L20,15 L20,16 Z" id="Combined-Shape" fill-opacity="0.75" fill="#FFFFFF"></path>
+                <g id="Group" transform="translate(12.000000, 12.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -137,13 +137,10 @@ class Home extends Component {
             </div>
             <div className='featured-links-container'>
                 <div className='featured-links-items'>
-                  <h3>Featured</h3>
-                  <Segment inverted>
-                    <Button inverted color='grey' onClick={this.setUpcomingReleases}>Upcoming Movies</Button><br/>
-                    <Button inverted color='grey' onClick={this.setNewReleases}>New Releases</Button><br/>
-                    <Button inverted color='grey' onClick={this.setPopularMovies}>Popular</Button><br/>
-                    <Button inverted color='grey' onClick={this.setFriends}>My Friends</Button><br/>
-                  </Segment>
+                    <Button className="upcoming-button" color='grey' onClick={this.setUpcomingReleases}></Button><br/>
+                    <Button className="new-releases-button" color='grey' onClick={this.setNewReleases}></Button><br/>
+                    <Button className="popular-button" color='grey' onClick={this.setPopularMovies}></Button><br/>
+                    <Button className="friends-button" color='grey' onClick={this.setFriends}></Button><br/>
                 </div>
             </div>
           </div>

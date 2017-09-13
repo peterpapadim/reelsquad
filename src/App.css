@@ -15,7 +15,6 @@
     width: 100%;
     height: 100%;
     background: url('./assets/splash_background.svg') no-repeat;
-    /*background-attachment: fixed;*/
     background-size: cover;
     text-align: center;
 }
@@ -66,7 +65,8 @@
 .left-column {
   width: 15%;
   height: 100%;
-  background: black;
+  background: url('./assets/menu_background.svg') no-repeat;
+  background-size: cover;
   float: left;
 }
 
@@ -79,10 +79,10 @@
 .featured-content {
   width: 100%;
   height: 50%;
-  background: #404040;
+  /*background: #404040;*/
   border-bottom: solid;
   border-width: medium;
-  border-color: #A0A0A0;
+  border-color: white;
 }
 
 .logo-container {
@@ -90,9 +90,9 @@
   display: flex;
   align-items: center;
   height: 38.5%;
-  border-bottom: solid;
+  /*border-bottom: solid;
   border-width: medium;
-  border-color: #A0A0A0;
+  border-color: #A0A0A0;*/
 }
 
 .logo img {
@@ -105,34 +105,98 @@
   color: white;
   text-align: center;
   word-wrap: break-word;
-  padding-top: 5%;
+  padding-top: 20%;
   overflow-y: auto;
 }
 
 .featured-links-items {
+  /*display: flex;*/
+  /*align-items: center;*/
   width: 100%;
   height: 100%;
-  align-items: center;
 }
 
 .ui.inverted.segment, .ui.primary.inverted.segment {
   background: transparent;
 }
 
-.ui.inverted.button {
+.ui.grey.button.upcoming-button {
+  height: 17%;
   width: 75%;
+  background: url('./assets/button_upcoming.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.upcoming-button:focus, .ui.grey.button.upcoming-button:hover {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_upcoming_active.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.new-releases-button {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_newreleases.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.new-releases-button:focus, .ui.grey.button.new-releases-button:hover {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_newreleases_active.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.popular-button {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_popular.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.popular-button:focus, .ui.grey.button.popular-button:hover {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_popular_active.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.friends-button {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_friends.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.grey.button.friends-button:focus, .ui.grey.button.friends-button:hover {
+  height: 17%;
+  width: 75%;
+  background: url('./assets/button_friends_active.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.inverted.button {
+  width: 80%;
   border-radius: 15px;
 }
 
-.ui.inverted.button:hover {
+.ui.inverted.button:hover, .ui.inverted.button:focus {
   background: white !important;
-  /*border: 1px solid yellow;*/
 }
 
 .lists-user {
   width: 100%;
   height: 50%;
-  background: #404040;
+  /*background: #404040;*/
 }
 
 .lists {
@@ -143,8 +207,40 @@
   height: 80%;
   border-bottom: solid;
   border-width: medium;
-  border-color: #A0A0A0;
+  border-color: white;
   overflow-y: auto;
+}
+
+
+.lists-container {
+  height: 100%;
+  width: 100%;
+}
+
+.add-list-button-container {
+  align-items: center;
+  height: 25%;
+  width: 100%;
+}
+
+.ui.button.add-list-button {
+  height: 100%;
+  width: 15%;
+  background: url('./assets/button_addlist.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.ui.button.add-list-button:hover {
+  height: 100%;
+  width: 15%;
+  background: url('./assets/button_addlist_active.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.new-list-entry {
+  padding-top: 10%;
 }
 
 .new-list-submit {
@@ -218,7 +314,7 @@
 
 .search {
   height: 19%;
-  background: black;
+  background: #262626;
   border-bottom: solid;
   border-width: medium;
   border-color: #A0A0A0;
