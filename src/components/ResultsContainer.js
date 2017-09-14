@@ -153,7 +153,6 @@ class ResultsContainer extends Component {
 
 
   render(){
-    console.log(this.props.listFriends)
     return(
       <div>
         {this.props.selectedList.length > 0 ? <div className='friends-in-list'>

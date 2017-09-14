@@ -107,7 +107,6 @@ class Auth extends Component {
 
 
   render() {
-    console.log(this.state.loggedIn)
     return(
       <div>
       { this.state.loggedIn ? <App loginStatus={this.state}/> : <div className='login-screen'><Login loginStatus={this.state}/></div> }
