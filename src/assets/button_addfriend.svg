@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>button_addfriend</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="33.6364862%" x2="100%" y2="83.6944782%" id="linearGradient-1">
+            <stop stop-color="#3865FF" offset="0%"></stop>
+            <stop stop-color="#746DFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-V2" transform="translate(-221.000000, -543.000000)">
+            <g id="button_addfriend" transform="translate(222.000000, 544.000000)">
+                <circle id="Oval" stroke="url(#linearGradient-1)" cx="20" cy="20" r="20"></circle>
+                <g id="Group" transform="translate(11.000000, 11.000000)" stroke="url(#linearGradient-1)">
+                    <path d="M16.0541691,9.60724214 C15.9786202,9.69483422 15.8982867,9.78033488 15.8130802,9.86347749 L8.49940546,17 L1.18472832,9.86347749 C-1.23612207,7.50126506 0.276533518,3.23558871 3.69980643,3.18179091 C3.72586941,3.18081277 3.7519324,3.18081277 3.77799538,3.18081277 C6.38529636,3.18081277 8.49940546,5.24273567 8.49940546,7.78688247 C8.49940546,5.24273567 10.6125121,3.18081277 13.2198131,3.18081277 C13.2458761,3.18081277 13.2719391,3.18081277 13.2980021,3.18179091 C13.3122074,3.18201415 13.3263798,3.18230992 13.3405192,3.18267778 C13.1206634,3.74595533 13,4.35888643 13,5 C13,7.07121965 14.2593838,8.84829446 16.0541691,9.60724214 Z" id="Combined-Shape"></path>
+                    <circle id="Oval-2" cx="18" cy="5" r="5"></circle>
+                </g>
+                <g id="plus" transform="translate(25.500000, 12.000000)" fill="url(#linearGradient-1)">
+                    <polygon id="Line-Copy-5" points="0.0833333333 4.5 6.91666667 4.5 6.91666667 3.5 0.0833333333 3.5"></polygon>
+                    <polygon id="Stroke-3" points="4 7.45449201 4 0.547749441 3 0.547749441 3 7.45449201"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

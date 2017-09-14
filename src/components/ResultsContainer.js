@@ -144,11 +144,19 @@ class ResultsContainer extends Component {
     this.setState({ addUserClicked: false })
   }
 
+  displayListFriends = () => {
+    return this.props.listFriends.map(friend => {
+      return <p>{friend.first_name} {friend.last_name}</p>
+    })
+  }
+
 
   render(){
+    console.log(this.props.listFriends)
     return(
       <div>
         {this.props.selectedList.length > 0 ? <div className='friends-in-list'>
+          {this.displayListFriends()}
         </div> : null}
         {this.state.addUserClicked ?
           <div className='add-friend-list'>
@@ -156,17 +164,17 @@ class ResultsContainer extends Component {
               <AddFriendList friends={this.state.friends} listFriends={this.props.listFriends} updatedFriends={this.state.updatedFriends} setUpdatedFriends={this.setUpdatedFriends} addOrRemove={this.addOrRemove}/>
             </div>
             <div className='friend-list-buttons'>
-              <div className='save-friend-button'>
-                <Button color='green' onClick={this.handleSaveClick}>Save</Button>
+              <div className='save'>
+                <Button className="save-button" color='green' onClick={this.handleSaveClick}></Button>
              </div>
-              <div className='cancel-button'>
-                <Button color='red' onClick={this.handleCancelClick}>Cancel</Button>
+              <div className='cancel'>
+                <Button className="cancel-button" color='red' onClick={this.handleCancelClick}></Button>
              </div>
            </div>
           </div> : null}
         <Card.Group>{this.displayResults()}</Card.Group>
         {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem} allLists={this.props.allLists} userID={this.props.userID} /> : null}
-        <div className="delete-list-button">{this.props.selectedList.length > 0 ? <div><div><Button negative onClick={this.props.handleListDelete}>Delete List</Button></div><div className='add-user-button'><Icon name='add user' size='big' color='teal' onClick={this.handleAddUserClick}/></div></div> : null}</div>
+        <div className="delete-addfriend-container">{this.props.selectedList.length > 0 ? <div className="delete-addfriend"><div className="delete-list"><Button className="delete-list-button"negative onClick={this.props.handleListDelete}></Button></div><div className="addfriend"><Button className='add-user-button' onClick={this.handleAddUserClick}></Button></div></div> : null}</div>
       </div>
     )
   }

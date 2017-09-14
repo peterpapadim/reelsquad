@@ -35,7 +35,7 @@ class AddFriendList extends Component {
   render(){
     console.log(this.props.updatedFriends)
     return(
-      <List divided verticalAlign='middle'>
+      <List className="list-container" divided verticalAlign='middle'>
         {this.renderFriendsList()}
       </List>
     )

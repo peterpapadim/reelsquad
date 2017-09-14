@@ -10,13 +10,11 @@ class MovieTvFilter extends Component {
   render(){
     return(
       <div className='filter-buttons-container'>
-        <Button.Group className='filter-buttons' onClick={this.handleFilterClick}>
-          <Button value=''>All</Button>
-          <Button.Or />
-          <Button value='movies'>Movies</Button>
-          <Button.Or />
-          <Button value='tv'>TV Shows</Button>
-        </Button.Group>
+        <div className='filter-buttons'>
+          <Button className='filter-button' value='' onClick={this.handleFilterClick}>All</Button>
+          <Button className='filter-button' value='movies' onClick={this.handleFilterClick}>Movies</Button>
+          <Button className='filter-button' value='tv' onClick={this.handleFilterClick}>TV Shows</Button>
+        </div>
       </div>
     )
   }
