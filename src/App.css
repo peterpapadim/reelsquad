@@ -432,10 +432,25 @@
 }
 
 .friends-in-list {
+  text-align: center;
   width: 100%;
   height: 50px;
   margin-bottom: 20px;
   /*background: blue;*/
+}
+
+.list-friend {
+  height: 50px;
+  width: 50px;
+  background: white;
+  display: inline-block;
+  border: 1px solid black;
+  border-color: rgba(67, 102, 255, 0.8);
+  border-radius: 100%;
+  font-size: 150%;
+  color: rgba(67, 102, 255, 0.8);
+  background: white;
+  padding-top: 14px;
 }
 
 .results-container {

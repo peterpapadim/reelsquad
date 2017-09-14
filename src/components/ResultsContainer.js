@@ -146,7 +146,8 @@ class ResultsContainer extends Component {
 
   displayListFriends = () => {
     return this.props.listFriends.map(friend => {
-      return <p>{friend.first_name} {friend.last_name}</p>
+      let initials = `${friend.first_name[0]}${friend.last_name[0]}`
+      return <div className="list-friend">{initials}</div>
     })
   }
 
