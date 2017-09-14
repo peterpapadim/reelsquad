@@ -79,9 +79,9 @@ class Modal extends Component {
                <div className="title-container"><div className="title">{MovieApiAdapter.getTitle(this.props.selectedItem)}</div></div>
                <div className="overview-container"><div className="overview">{this.props.selectedItem.overview}</div></div>
                <div className="dropdown-save-container">
-                 <div className="dropdown-container"><div className="dropdown"><Dropdown placeholder='Add to list...' search selection options={this.dropdownOptions()} onChange={this.handleSelectedListChange}/></div></div>
-                 <div className="save-container"><div className="save"><Button color='teal' onClick={this.handleSelectedListSubmit}>Save</Button></div></div>
                  <div className="saved-message">{this.state.contentSaved ? <p>Successfully Saved!</p> : null}</div>
+                 <div className="dropdown-container"><div className="dropdown"><Dropdown placeholder='Add to list...' search selection options={this.dropdownOptions()} onChange={this.handleSelectedListChange}/></div></div>
+                 <div className="save-container"><div className="save"><Button className="save-submit" color='teal' onClick={this.handleSelectedListSubmit}>Save</Button></div></div>
               </div>
               </div>
             </div>

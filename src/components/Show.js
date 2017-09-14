@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MovieApiAdapter from '../adapters/MovieApiAdapter';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Reveal } from 'semantic-ui-react';
 
 class Show extends Component {
 
@@ -11,7 +11,14 @@ class Show extends Component {
   render(){
     return(
       <Card className="card-content" centered="true" onClick={this.handleCardClick} size="tiny">
-          <Image centered="true" src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='small' />
+          <Reveal animated='fade' instant="true">
+            <Reveal.Content visible>
+              <Image src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)}size='large' />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+              <Image src='poster_hovered.svg' size="large" />
+            </Reveal.Content>
+          </Reveal>
         <Card.Content>
           <Card.Header>
             {MovieApiAdapter.getTitle(this.props.currentMovieOrShow)}
