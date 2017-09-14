@@ -13,10 +13,10 @@ class Show extends Component {
       <Card className="card-content" centered="true" onClick={this.handleCardClick} size="tiny">
           <Reveal animated='fade' instant="true">
             <Reveal.Content visible>
-              <Image src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)}size='large' />
+              <Image className="card-image" src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)}size='medium' />
             </Reveal.Content>
             <Reveal.Content hidden>
-              <Image src='poster_hovered.svg' size="large" />
+              <Image className="hover-layover" src='poster_hovered.svg' size="medium" />
             </Reveal.Content>
           </Reveal>
         <Card.Content>

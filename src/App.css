@@ -482,6 +482,10 @@
   text-align: center;
 }
 
+.ui.small.centered.image {
+  width: 100%;
+}
+
 .ui.fade.instant.reveal {
   overflow: hidden;
   width: 100%;
@@ -493,10 +497,12 @@
 }
 
 
-.ui.large.image{
-  width: 100%;
+.ui.medium.image {
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
+
 
 .add-friend-list {
   position: absolute;
