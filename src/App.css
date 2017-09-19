@@ -51,6 +51,14 @@
   height: 15%;
 }
 
+.ui.black.button:focus{
+  background: url('./assets/splash_button_facebooklogin_hovered.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 11%;
+  height: 15%;
+}
+
 
 
 /*.login-screen {
@@ -379,8 +387,10 @@
 }
 
 .ui.teal.button.logout:hover {
-  border: 1px solid white;
-  border-radius: 10px;
+  /*border: 1px solid white;
+  border-radius: 10px;*/
+  zoom: 103%;
+  color: #cce7ff;
 }
 
 .search {
@@ -476,6 +486,78 @@
   text-align: left;
 }
 
+.layover-container {
+  position: relative;
+}
+
+.layover {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 5;
+  float: left;
+  background-color: rgba(0,0,0,0.60);
+  backfilter: blur(5px);
+  text-align: center;
+  /*display: flex;
+  align-items: center;
+  text-align: center;*/
+}
+
+.layover-buttons {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.view-details-button {
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: url('./assets/button_seedetails.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.view-details-button:hover {
+  cursor: pointer;
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: url('./assets/button_seedetails_hovered.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.view-details-button:focus {
+  outline: 0;
+}
+
+.remove-from-list-button{
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: url('./assets/button_removemovie.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.remove-from-list-button:hover {
+  cursor: pointer;
+  width: 50%;
+  height: 50px;
+  border: none;
+  background: url('./assets/button_removemovie_hovered.svg') no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.remove-from-list-button:focus {
+  outline: 0;
+}
+
 .ui.small.centered.image:hover{
   /*transition: .2s ease;
   opacity: .5;*/
@@ -488,6 +570,7 @@
 
 .ui.small.centered.image {
   width: 100%;
+  max-width: 100%;
 }
 
 .ui.fade.instant.reveal {
@@ -501,11 +584,11 @@
 }
 
 
-.ui.medium.image {
+/*.ui.medium.image {
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-}
+}*/
 
 
 

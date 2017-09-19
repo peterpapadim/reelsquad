@@ -23,7 +23,7 @@ class Result extends Component {
     return(
       this.props.friend ? <Friend friend={this.props.friend} count={this.props.count}/>
           :
-      <Show currentMovieOrShow={this.props.currentMovieOrShow} setSelectedItem={this.props.setSelectedItem}/>
+      <Show input={this.props.input} currentUser={this.props.currentUser} currentMovieOrShow={this.props.currentMovieOrShow} setListItemsAndUsers={this.props.setListItemsAndUsers} setSelectedItem={this.props.setSelectedItem} selectedList={this.props.selectedList}/>
       // <Card onClick={this.handleCardClick}>
       //   <Image src={MovieApiAdapter.getImageUrl(this.props.currentMovieOrShow.poster_path)} size='medium' />
       //   <Card.Content>

@@ -72,7 +72,7 @@ class Auth extends Component {
   componentDidMount(){
     window.fbAsyncInit = () => {
       window.FB.init({
-        appId      : '459547347771719',
+        appId      : process.env.REACT_APP_SECRET_CODE,
         cookie     : true,
         xfbml      : true,
         version    : 'v2.1'

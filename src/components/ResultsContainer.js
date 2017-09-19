@@ -84,7 +84,7 @@ class ResultsContainer extends Component {
       if (Object.keys(result).length === 2){
         return <Result key={result.id} friend={result} count={index}/>
       } else {
-        return <Result key={result.id} currentMovieOrShow={result} setSelectedItem={this.setSelectedItem}/>
+        return <Result key={result.id} input={this.props.input} currentUser={this.props.currentUser} setListItemsAndUsers={this.props.setListItemsAndUsers} currentMovieOrShow={result} setSelectedItem={this.setSelectedItem} selectedList={this.props.selectedList}/>
       }
     })
   }
@@ -155,7 +155,7 @@ class ResultsContainer extends Component {
   render(){
     return(
       <div>
-        {this.props.selectedList.length > 0 ? <div className='friends-in-list'>
+        {this.props.selectedList.length > 0 && this.props.input.length === 0 ? <div className='friends-in-list'>
           {this.displayListFriends()}
         </div> : null}
         {this.state.addUserClicked ?
@@ -174,7 +174,7 @@ class ResultsContainer extends Component {
           </div> : null}
         <Card.Group>{this.displayResults()}</Card.Group>
         {this.state.selectedItem ? <Modal selectedItem={this.state.selectedItem} setSelectedItem={this.setSelectedItem} allLists={this.props.allLists} userID={this.props.userID} /> : null}
-        <div className="delete-addfriend-container">{this.props.selectedList.length > 0 ? <div className="delete-addfriend"><div className="delete-list"><Button className="delete-list-button"negative onClick={this.props.handleListDelete}></Button></div><div className="addfriend"><Button className='add-user-button' onClick={this.handleAddUserClick}></Button></div></div> : null}</div>
+        <div className="delete-addfriend-container">{this.props.selectedList.length > 0 && this.props.input.length === 0 ? <div className="delete-addfriend"><div className="delete-list"><Button className="delete-list-button"negative onClick={this.props.handleListDelete}></Button></div><div className="addfriend"><Button className='add-user-button' onClick={this.handleAddUserClick}></Button></div></div> : null}</div>
       </div>
     )
   }

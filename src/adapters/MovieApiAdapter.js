@@ -21,7 +21,7 @@ class MovieApiAdapter {
     return fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}&api_key=e5a611fc95f5e1b8c6b311447c94ee76`)
   }
 
-  static newReleases() {
+  static newReleases(page=null) {
     let twoWeeksAgo = new Date(+new Date - 12096e5)
     let today = new Date()
 
@@ -36,6 +36,7 @@ class MovieApiAdapter {
     let endDate = `${endYYYY}-${endMM}-${endDD}`
 
     return fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}&api_key=e5a611fc95f5e1b8c6b311447c94ee76`)
+
   }
 
   static popularMovies() {

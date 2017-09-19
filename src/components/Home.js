@@ -73,12 +73,10 @@ class Home extends Component {
     })
   }
 
-  setListItems = (event) => {
-    this.setState({selectedList: event.target.innerText})
+  setListItemsAndUsers = (listName) => {
     this.setState({input: ''})
     this.setState({resultsOnButtonClick: []})
-
-    ListAdapter.listShowsUsers(this.props.loginStatus.userID, event.target.innerText)
+    ListAdapter.listShowsUsers(this.props.loginStatus.userID, listName)
     .then(resp => resp.json())
     .then(json => {
       json.shows.map((show) => {
@@ -94,6 +92,14 @@ class Home extends Component {
       })
       this.setState({ listFriends: json.users })
     })
+  }
+
+  setListItems = (event) => {
+    this.setState({selectedList: event.target.innerText})
+    this.setState({input: ''})
+    this.setState({resultsOnButtonClick: []})
+
+    this.setListItemsAndUsers(event.target.innerText)
   }
 
   handleListDelete = () => {
@@ -147,7 +153,12 @@ class Home extends Component {
           <div className='lists-user'>
             <div className='lists'>
               <h3>My Lists</h3>
-              <ListsContainer userID={this.props.loginStatus.userID} setLists={this.setLists} allLists={this.state.allLists} setListItems={this.setListItems}/>
+              <ListsContainer
+                userID={this.props.loginStatus.userID}
+                setLists={this.setLists}
+                allLists={this.state.allLists}
+                setListItems={this.setListItems}
+              />
             </div>
             <div className='user'>
               <div className='user-name-container'>
@@ -173,7 +184,17 @@ class Home extends Component {
             <MovieTvFilter setSelectedFilter={this.setSelectedFilter}/>
           </div>
           <div className='results'>
-            <ResultsContainer input={this.state.input} selectedList={this.state.selectedList} selectedFilter={this.state.selectedFilter} resultsOnButtonClick={this.state.resultsOnButtonClick} allLists={this.state.allLists} userID={this.props.loginStatus.userID} handleListDelete={this.handleListDelete} listFriends={this.state.listFriends} setListFriends={this.setListFriends}/>
+            <ResultsContainer
+              input={this.state.input}
+              currentUser={this.props.loginStatus}
+              setListItemsAndUsers={this.setListItemsAndUsers}
+              selectedList={this.state.selectedList}
+              selectedFilter={this.state.selectedFilter}
+              resultsOnButtonClick={this.state.resultsOnButtonClick}
+              allLists={this.state.allLists} userID={this.props.loginStatus.userID}
+              handleListDelete={this.handleListDelete} listFriends={this.state.listFriends}
+              setListFriends={this.setListFriends}
+            />
           </div>
         </div>
 
