@@ -1,4 +1,4 @@
-#README
+# README
 
 "The best way to look up any movie or TV show and create a queued list to share with friends"
 
