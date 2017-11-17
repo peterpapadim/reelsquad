@@ -1,4 +1,4 @@
-The best way to look up any movie or TV show and create a queued list to share with friends
+"The best way to look up any movie or TV show and create a queued list to share with friends"
 
 Technologies used:
 
@@ -11,13 +11,13 @@ Technologies used:
 Build date: 8/20/17 - 9/5/17
 
 
-Front-end: https://github.com/peterpapadim/reelsquad
-Back-end: https://github.com/peterpapadim/reelsquad-api
-Demo Video: https://www.dropbox.com/s/0gpy2439bv221md/reelsquad_demo.mov?dl=0
++ Front-end: https://github.com/peterpapadim/reelsquad
++ Back-end: https://github.com/peterpapadim/reelsquad-api
++ Demo Video: https://www.dropbox.com/s/0gpy2439bv221md/reelsquad_demo.mov?dl=0
 
 
 Contact:
 
-Panagiotis Papadimitropoulos
-ppapadim12@gmail.com
-codepeter.com
++ Panagiotis Papadimitropoulos
++ ppapadim12@gmail.com
++ codepeter.com
